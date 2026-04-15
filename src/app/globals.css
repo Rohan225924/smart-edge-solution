@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #FDCB00;
+  --secondary: #00CEC9;
+  --accent: #00B894;
+  --success: #00B894;
+  --gradient-1: linear-gradient(135deg, #FDCB00 0%, #F39C12 100%);
+  --gradient-2: linear-gradient(135deg, #00CEC9 0%, #0984e3 100%);
+  --gradient-3: linear-gradient(135deg, #00B894 0%, #00CEC9 100%);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #0a0a0f;
+  color: #f8fafc;
+}
+
+.gradient-text {
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: var(--gradient-1);
+}
+
+.gradient-border {
+  position: relative;
+  background: #12121a;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: var(--gradient-1);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.glow {
+  box-shadow: 0 0 60px rgba(253, 203, 0, 0.3), 0 0 120px rgba(243, 156, 18, 0.2);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  will-change: transform, opacity;
+  z-index: 1;
+}
+
+.ambient-orb-1 {
+  width: 600px;
+  height: 600px;
+  top: -20%;
+  left: -15%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.5) 0%, transparent 70%);
+  animation: float-orb 15s ease-in-out infinite, pulse-glow 8s ease-in-out infinite;
+}
+
+.ambient-orb-2 {
+  width: 500px;
+  height: 500px;
+  top: 30%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, transparent 70%);
+  animation: float-orb 20s ease-in-out infinite reverse, pulse-glow 10s ease-in-out infinite;
+}
+
+.ambient-orb-3 {
+  width: 550px;
+  height: 550px;
+  bottom: -15%;
+  left: 25%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
+  animation: float-orb 18s ease-in-out infinite, pulse-glow 12s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes chatbot-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes chatbot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes chatbot-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes chatbot-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes chatbot-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes chatbot-dot-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.chatbot-button {
+  animation: chatbot-bounce 2s ease-in-out infinite;
+}
+
+.chatbot-pulse-dot {
+  animation: chatbot-pulse 1.5s ease-in-out infinite;
+}
+
+.chatbot-window {
+  animation: chatbot-slide-up 0.3s ease-out forwards;
+}
+
+.chatbot-message-appear {
+  animation: chatbot-fade-in 0.3s ease-out forwards;
+}
+
+.chatbot-bounce-dot {
+  animation: chatbot-dot-bounce 0.6s ease-in-out infinite;
+}
