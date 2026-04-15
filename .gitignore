@@ -43,3 +43,6 @@ next-env.d.ts
 # data directory (contains user data, posts, inquiries)
 data/
 *.json
+node_modules
+.next
+.env.local
